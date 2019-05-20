@@ -10,28 +10,33 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace Accounting
 {
     /// <summary>
-    /// Логика взаимодействия для MainWindow.xaml
+    /// Логика взаимодействия для AccountWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class AccountWindow : Window
     {
-        public MainWindow()
+        public Account acc = null;
+
+        public AccountWindow()
         {
             InitializeComponent();
             datePicker1.SelectedDate = DateTime.Today;
+
         }
 
-
-        //получить список аккаунтов
-        private void getAccount(object sender, RoutedEventArgs e)
+        //создание аккаунта
+        private void createAccount(object sender, RoutedEventArgs e)
         {
-            var aw = new AccountWindow();
-            aw.ShowDialog();
+
+        }
+
+        public bool check()
+        {
+            return false;
         }
     }
 }
