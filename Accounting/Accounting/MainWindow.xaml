@@ -5,8 +5,344 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Accounting"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        
-    </Grid>
+        Title="MainWindow" Height="700" Width="800">
+    <TabControl>
+        <TabItem x:Name="calendarTab">
+            <TabItem.Header>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Margin="3">АБОНЕМЕНТЫ</TextBlock>
+                </StackPanel>
+            </TabItem.Header>
+            <TabItem.Content>
+                <Canvas x:Name="canvas">
+                   
+
+                    <ListView
+                        x:Name="dataGridView"
+                        Canvas.Left="23"
+                        Canvas.Top="83"
+                        Width="715"
+                        Height="500"
+                        HorizontalAlignment="Stretch"
+                        BorderBrush="#FF25A0DA"
+                        BorderThickness="1"
+                        FontFamily="Microsoft Sans Serif"
+                        Foreground="#FF000000"
+                        IsTextSearchEnabled="False"
+                        KeyboardNavigation.DirectionalNavigation="Cycle"
+
+                        SelectionMode="Single">
+                        <ListView.ItemContainerStyle>
+                            <Style TargetType="{x:Type ListViewItem}">
+                                <Style.Triggers>
+                                    <Trigger Property="IsSelected" Value="True">
+
+                                        <Setter Property="Foreground" Value="White" />
+                                        <Setter Property="Background" Value="DarkGray" />
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </ListView.ItemContainerStyle>
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn Width="70" Header="ID">
+                                    <GridViewColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <TextBox
+                                                Width="100"
+                                                Background="{Binding matchColor}"
+                                                BorderThickness="0"
+                                                Text="{Binding r_m_id}" />
+                                        </DataTemplate>
+                                    </GridViewColumn.CellTemplate>
+                                </GridViewColumn>
+                                <GridViewColumn Width="270" Header="MATCH">
+                                    <GridViewColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <TextBox
+                                                Width="270"
+                                                Background="{Binding matchColor}"
+                                                BorderThickness="0"
+                                                Text="{Binding r_m_n}" />
+                                        </DataTemplate>
+                                    </GridViewColumn.CellTemplate>
+                                </GridViewColumn>
+                                <GridViewColumn Width="270" Header="TOURNAMENT">
+                                    <GridViewColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <TextBox
+                                                Width="270"
+                                                Background="{Binding matchColor}"
+                                                BorderThickness="0"
+                                                Text="{Binding r_tr_n}" />
+                                        </DataTemplate>
+                                    </GridViewColumn.CellTemplate>
+                                </GridViewColumn>
+                                <GridViewColumn Width="120" Header="ROUND">
+                                    <GridViewColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <TextBox
+                                                Width="120"
+                                                Background="{Binding matchColor}"
+                                                BorderThickness="0"
+                                                Text="{Binding r_r_n}" />
+                                        </DataTemplate>
+                                    </GridViewColumn.CellTemplate>
+                                </GridViewColumn>
+                                <GridViewColumn Width="70" Header="ТИП">
+                                    <GridViewColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <TextBox
+                                                Width="70"
+                                                Background="{Binding matchColor}"
+                                                BorderThickness="0"
+                                                Text="{Binding r_f_n}" />
+                                        </DataTemplate>
+                                    </GridViewColumn.CellTemplate>
+                                </GridViewColumn>
+
+                                <GridViewColumn Width="200" Header="ДАТА">
+                                    <GridViewColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <TextBox
+                                                Width="200"
+                                                Background="{Binding matchColor}"
+                                                BorderThickness="0"
+                                                Text="{Binding r_m_d}" />
+                                        </DataTemplate>
+                                    </GridViewColumn.CellTemplate>
+                                </GridViewColumn>
+
+                                <GridViewColumn Width="40" Header="RL">
+                                    <GridViewColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <TextBox
+                                                Width="40"
+                                                Background="{Binding matchColor}"
+                                                BorderThickness="0"
+                                                Text="{Binding r_m_rl}"
+                                                TextAlignment="Center" />
+                                        </DataTemplate>
+                                    </GridViewColumn.CellTemplate>
+                                </GridViewColumn>
+
+                                <GridViewColumn Width="70" Header="ОНЛАЙН">
+                                    <GridViewColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <TextBox
+                                                Width="70"
+                                                Background="{Binding matchColor}"
+                                                BorderThickness="0"
+                                                Text="{Binding r_m_O}"
+                                                TextAlignment="Center" />
+                                        </DataTemplate>
+                                    </GridViewColumn.CellTemplate>
+                                </GridViewColumn>
+
+
+
+                                <GridViewColumn Width="70" Header="ВИДЕО">
+                                    <GridViewColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <TextBox
+                                                Width="70"
+                                                Background="{Binding matchColor}"
+                                                BorderThickness="0"
+                                                Text="{Binding m_vs}"
+                                                TextAlignment="Center" />
+                                        </DataTemplate>
+                                    </GridViewColumn.CellTemplate>
+                                </GridViewColumn>
+                                <GridViewColumn Width="200" Header="ОПИСАНИЕ">
+                                    <GridViewColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <TextBox
+                                                Width="200"
+                                                Background="{Binding matchColor}"
+                                                BorderThickness="0"
+                                                Text="{Binding m_d}"
+                                                TextAlignment="Left" />
+                                        </DataTemplate>
+                                    </GridViewColumn.CellTemplate>
+                                </GridViewColumn>
+                                <GridViewColumn Width="auto" Header="">
+                                    <GridViewColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <StackPanel Orientation="Horizontal">
+                                                <TextBlock
+                                                    HorizontalAlignment="Right"
+                                                    TextAlignment="Right"
+                                                    Visibility="{Binding mainVisibility}">
+                                                   
+                                                </TextBlock>
+                                            </StackPanel>
+                                        </DataTemplate>
+                                    </GridViewColumn.CellTemplate>
+                                </GridViewColumn>
+
+                                <GridViewColumn Width="60" Header="">
+                                    <GridViewColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <StackPanel Orientation="Horizontal">
+                                                <TextBlock HorizontalAlignment="Center" Visibility="{Binding mainVisibility}">
+
+                                                </TextBlock>
+                                            </StackPanel>
+                                        </DataTemplate>
+                                    </GridViewColumn.CellTemplate>
+                                </GridViewColumn>
+                                <GridViewColumn Width="80" Header="">
+                                    <GridViewColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <StackPanel Orientation="Horizontal">
+                                                <TextBlock
+                                                    HorizontalAlignment="Right"
+                                                    TextAlignment="Right"
+                                                    Visibility="{Binding mainVisibility}">
+
+                                                </TextBlock>
+                                            </StackPanel>
+                                        </DataTemplate>
+                                    </GridViewColumn.CellTemplate>
+                                </GridViewColumn>
+
+                                <GridViewColumn Width="109" Header="">
+                                    <GridViewColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <StackPanel Orientation="Horizontal">
+                                                <TextBlock
+                                                    HorizontalAlignment="Right"
+                                                    TextAlignment="Right"
+                                                    Visibility="{Binding mainVisibility}">
+
+                                                </TextBlock>
+                                            </StackPanel>
+                                        </DataTemplate>
+                                    </GridViewColumn.CellTemplate>
+                                </GridViewColumn>
+
+
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+
+
+                    <ListView
+                        x:Name="dataGridView2"
+                        Canvas.Left="920"
+                        Canvas.Top="10"
+                        Height="150"
+                        Margin="3"
+                        HorizontalAlignment="Stretch"
+                        BorderBrush="#FF25A0DA"
+                        BorderThickness="1"
+                        FontFamily="Microsoft Sans Serif"
+                        Foreground="#FF000000"
+                        IsTextSearchEnabled="False"
+                        KeyboardNavigation.DirectionalNavigation="Cycle">
+                        <ListView.ItemContainerStyle>
+                            <Style TargetType="{x:Type ListViewItem}">
+                                <Style.Triggers>
+                                    <Trigger Property="IsSelected" Value="True">
+                                        <Setter Property="Foreground" Value="White" />
+                                        <Setter Property="Background" Value="Blue" />
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </ListView.ItemContainerStyle>
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn
+                                    Width="70"
+                                    DisplayMemberBinding="{Binding t}"
+                                    Header="ПЕРИОД" />
+                                <GridViewColumn
+                                    Width="80"
+                                    DisplayMemberBinding="{Binding g}"
+                                    Header="ГОТОВНОСТЬ" />
+                                <GridViewColumn Width="120" Header="Время 1">
+                                    <GridViewColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <StackPanel
+                                                Orientation="Horizontal"
+                                                Tag="1"
+                                                ToolTip=""
+                                                >
+                                                <TextBox
+                                                    Margin="0,-5,0,-5"
+                                                    Background="{Binding matchColor}"
+                                                    BorderThickness="0"
+                                                    Foreground="{Binding d1Color}"
+                                                    Text="{Binding d1}" />
+                                            </StackPanel>
+                                        </DataTemplate>
+                                    </GridViewColumn.CellTemplate>
+                                </GridViewColumn>
+                                <GridViewColumn Width="200" Header="1-ая ПОЛОВИНА">
+                                    <GridViewColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <TextBox
+                                                Background="{Binding matchColor}"
+                                                BorderThickness="0"
+                                                Text="{Binding h1}" />
+                                        </DataTemplate>
+                                    </GridViewColumn.CellTemplate>
+                                </GridViewColumn>
+                                <GridViewColumn Width="200" Header="2-ая ПОЛОВИНА">
+                                    <GridViewColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <TextBox
+                                                Background="{Binding matchColor}"
+                                                BorderThickness="0"
+                                                Text="{Binding h2}" />
+                                        </DataTemplate>
+                                    </GridViewColumn.CellTemplate>
+                                </GridViewColumn>
+                                <GridViewColumn Width="120" Header="ВРЕМЯ 2">
+                                    <GridViewColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <StackPanel
+                                                Orientation="Horizontal"
+                                                Tag="2"
+                                                ToolTip=""
+                                                >
+                                                <TextBox
+                                                    Margin="0,-5,0,-5"
+                                                    Background="{Binding matchColor}"
+                                                    BorderThickness="0"
+                                                    Foreground="{Binding d2Color}"
+                                                    Text="{Binding d2}" />
+                                            </StackPanel>
+                                        </DataTemplate>
+                                    </GridViewColumn.CellTemplate>
+                                </GridViewColumn>
+
+
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+
+                </Canvas>
+            </TabItem.Content>
+        </TabItem>
+        <TabItem x:Name="sequenceTab">
+            <TabItem.Header>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Margin="3">ОЧЕРЕДЬ</TextBlock>
+                </StackPanel>
+            </TabItem.Header>
+
+        </TabItem>
+
+
+       
+        <TabItem x:Name="sequenceReport">
+            <TabItem.Header>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Margin="3">ОТЧЕТЫ</TextBlock>
+                </StackPanel>
+            </TabItem.Header>
+
+        </TabItem>
+    </TabControl>
 </Window>
