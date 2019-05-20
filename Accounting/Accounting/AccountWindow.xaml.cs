@@ -31,12 +31,36 @@ namespace Accounting
         //создание аккаунта
         private void createAccount(object sender, RoutedEventArgs e)
         {
-
+            bool ch = check();
+            if (ch)
+            {
+                acc = new Account();
+                acc.fio = fio.Text;
+                acc.StDate = datePicker1.SelectedDate.Value;
+                acc.days = Convert.ToInt32(col.Text);
+                DialogResult = true;
+            }
         }
 
         public bool check()
         {
-            return false;
+            if (String.IsNullOrEmpty(fio.Text))
+            {
+                MessageBox.Show("Введите фио");
+                return false;
+            }
+            if (String.IsNullOrEmpty(col.Text))
+            {
+                MessageBox.Show("Введите кол-во дней");
+                return false;
+            }
+            int res;
+            if (Int32.TryParse(col.Text, out  res) == false)
+            {
+                MessageBox.Show("Число дней должно быть числом");
+                return false;
+            }
+            return true;
         }
     }
 }

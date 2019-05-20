@@ -5,11 +5,11 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Accounting"
         mc:Ignorable="d"
-        Title="НОВЫЙ АБОНЕНТ" Height="218.144" Width="661.634" ResizeMode="NoResize" WindowStartupLocation="CenterOwner">
+        Title="НОВЫЙ АБОНЕНТ" Height="218.144" Width="661.634" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
        <StackPanel Margin="20 20" Orientation="Vertical">
            <StackPanel Orientation="Horizontal">
                <Label Width="100"> ФИО</Label>
-               <TextBox Width="500" TextAlignment="Center" ></TextBox>
+               <TextBox Width="500" x:Name="fio" TextAlignment="Center" ></TextBox>
             </StackPanel>
 
         <StackPanel Orientation="Horizontal">

@@ -20,10 +20,17 @@ namespace Accounting
     /// </summary>
     public partial class MainWindow : Window
     {
+        public List<Account> accounts = new List<Account>();
         public MainWindow()
         {
             InitializeComponent();
             datePicker1.SelectedDate = DateTime.Today;
+            getAccounts();
+        }
+
+        public void getAccounts()
+        {
+            accounts = Account.LoadFromFile("accounts");
         }
 
 
@@ -32,6 +39,17 @@ namespace Accounting
         {
             var aw = new AccountWindow();
             aw.ShowDialog();
+            if (aw.DialogResult == true)
+            {
+                accounts.Add(aw.acc);
+                saveAccounts();
+            }
+            
+        }
+
+        public void saveAccounts()
+        {
+            Account.SaveToFile("accounts", accounts);
         }
     }
 }
