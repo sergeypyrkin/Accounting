@@ -15,7 +15,24 @@
             </TabItem.Header>
             <TabItem.Content>
                 <Canvas x:Name="canvas">
-                   
+                    <DatePicker  Canvas.Top="23" Canvas.Left="23" Name="datePicker1" IsDropDownOpen="False"  SelectedDateFormat="Short" Height="27" />
+                    <Button
+                        x:Name="b0"
+                        Canvas.Left="161"
+                        Canvas.Top="20"
+                        Width="100"
+                        Click="getAccount"
+                        Content="ПОЛУЧИТЬ"
+                        Tag="1" Height="50" />
+
+                    <Button
+                        x:Name="b1"
+                        Canvas.Left="638"
+                        Canvas.Top="20"
+                        Width="100"
+                        Click="getAccount"
+                        Content="СОЗДАТЬ НОВЫЙ"
+                        Tag="1" Height="50" />
 
                     <ListView
                         x:Name="dataGridView"
@@ -173,7 +190,7 @@
                                                     HorizontalAlignment="Right"
                                                     TextAlignment="Right"
                                                     Visibility="{Binding mainVisibility}">
-                                                   
+
                                                 </TextBlock>
                                             </StackPanel>
                                         </DataTemplate>
@@ -227,100 +244,7 @@
                     </ListView>
 
 
-                    <ListView
-                        x:Name="dataGridView2"
-                        Canvas.Left="920"
-                        Canvas.Top="10"
-                        Height="150"
-                        Margin="3"
-                        HorizontalAlignment="Stretch"
-                        BorderBrush="#FF25A0DA"
-                        BorderThickness="1"
-                        FontFamily="Microsoft Sans Serif"
-                        Foreground="#FF000000"
-                        IsTextSearchEnabled="False"
-                        KeyboardNavigation.DirectionalNavigation="Cycle">
-                        <ListView.ItemContainerStyle>
-                            <Style TargetType="{x:Type ListViewItem}">
-                                <Style.Triggers>
-                                    <Trigger Property="IsSelected" Value="True">
-                                        <Setter Property="Foreground" Value="White" />
-                                        <Setter Property="Background" Value="Blue" />
-                                    </Trigger>
-                                </Style.Triggers>
-                            </Style>
-                        </ListView.ItemContainerStyle>
-                        <ListView.View>
-                            <GridView>
-                                <GridViewColumn
-                                    Width="70"
-                                    DisplayMemberBinding="{Binding t}"
-                                    Header="ПЕРИОД" />
-                                <GridViewColumn
-                                    Width="80"
-                                    DisplayMemberBinding="{Binding g}"
-                                    Header="ГОТОВНОСТЬ" />
-                                <GridViewColumn Width="120" Header="Время 1">
-                                    <GridViewColumn.CellTemplate>
-                                        <DataTemplate>
-                                            <StackPanel
-                                                Orientation="Horizontal"
-                                                Tag="1"
-                                                ToolTip=""
-                                                >
-                                                <TextBox
-                                                    Margin="0,-5,0,-5"
-                                                    Background="{Binding matchColor}"
-                                                    BorderThickness="0"
-                                                    Foreground="{Binding d1Color}"
-                                                    Text="{Binding d1}" />
-                                            </StackPanel>
-                                        </DataTemplate>
-                                    </GridViewColumn.CellTemplate>
-                                </GridViewColumn>
-                                <GridViewColumn Width="200" Header="1-ая ПОЛОВИНА">
-                                    <GridViewColumn.CellTemplate>
-                                        <DataTemplate>
-                                            <TextBox
-                                                Background="{Binding matchColor}"
-                                                BorderThickness="0"
-                                                Text="{Binding h1}" />
-                                        </DataTemplate>
-                                    </GridViewColumn.CellTemplate>
-                                </GridViewColumn>
-                                <GridViewColumn Width="200" Header="2-ая ПОЛОВИНА">
-                                    <GridViewColumn.CellTemplate>
-                                        <DataTemplate>
-                                            <TextBox
-                                                Background="{Binding matchColor}"
-                                                BorderThickness="0"
-                                                Text="{Binding h2}" />
-                                        </DataTemplate>
-                                    </GridViewColumn.CellTemplate>
-                                </GridViewColumn>
-                                <GridViewColumn Width="120" Header="ВРЕМЯ 2">
-                                    <GridViewColumn.CellTemplate>
-                                        <DataTemplate>
-                                            <StackPanel
-                                                Orientation="Horizontal"
-                                                Tag="2"
-                                                ToolTip=""
-                                                >
-                                                <TextBox
-                                                    Margin="0,-5,0,-5"
-                                                    Background="{Binding matchColor}"
-                                                    BorderThickness="0"
-                                                    Foreground="{Binding d2Color}"
-                                                    Text="{Binding d2}" />
-                                            </StackPanel>
-                                        </DataTemplate>
-                                    </GridViewColumn.CellTemplate>
-                                </GridViewColumn>
 
-
-                            </GridView>
-                        </ListView.View>
-                    </ListView>
 
                 </Canvas>
             </TabItem.Content>
@@ -328,14 +252,14 @@
         <TabItem x:Name="sequenceTab">
             <TabItem.Header>
                 <StackPanel Orientation="Horizontal">
-                    <TextBlock Margin="3">ОЧЕРЕДЬ</TextBlock>
+                    <TextBlock Margin="3">ПОСЕЩЕНИЯ</TextBlock>
                 </StackPanel>
             </TabItem.Header>
 
         </TabItem>
 
 
-       
+
         <TabItem x:Name="sequenceReport">
             <TabItem.Header>
                 <StackPanel Orientation="Horizontal">

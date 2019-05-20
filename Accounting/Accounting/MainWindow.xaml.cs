@@ -23,6 +23,13 @@ namespace Accounting
         public MainWindow()
         {
             InitializeComponent();
+            datePicker1.SelectedDate = DateTime.Today;
+        }
+
+
+        //получить список аккаунтов
+        private void getAccount(object sender, RoutedEventArgs e)
+        {
         }
     }
 }
