@@ -30,7 +30,7 @@
                         Canvas.Left="638"
                         Canvas.Top="20"
                         Width="100"
-                        Click="getAccount"
+                        Click="newAccount"
                         Content="СОЗДАТЬ НОВЫЙ"
                         Tag="1" Height="50" />
 

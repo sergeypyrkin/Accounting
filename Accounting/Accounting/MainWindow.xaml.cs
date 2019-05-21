@@ -21,6 +21,8 @@ namespace Accounting
     public partial class MainWindow : Window
     {
         public List<Account> accounts = new List<Account>();
+        public List<AccountView> accountsViews = new List<AccountView>();
+        public DateTime curDate;
         public MainWindow()
         {
             InitializeComponent();
@@ -31,11 +33,32 @@ namespace Accounting
         public void getAccounts()
         {
             accounts = Account.LoadFromFile("accounts");
+            curDate = datePicker1.SelectedDate.Value;
+            accountsViews.Clear();
+            foreach (Account acc in accounts)
+            {
+                AccountView av = new AccountView(acc);
+                if (av.isCurrentAcc(curDate))
+                {
+                    accountsViews.Add(av);
+                }
+            }
         }
 
 
         //получить список аккаунтов
         private void getAccount(object sender, RoutedEventArgs e)
+        {
+
+            getAccounts();
+        }
+
+        public void saveAccounts()
+        {
+            Account.SaveToFile("accounts", accounts);
+        }
+
+        private void newAccount(object sender, RoutedEventArgs e)
         {
             var aw = new AccountWindow();
             aw.ShowDialog();
@@ -44,12 +67,6 @@ namespace Accounting
                 accounts.Add(aw.acc);
                 saveAccounts();
             }
-            
-        }
-
-        public void saveAccounts()
-        {
-            Account.SaveToFile("accounts", accounts);
         }
     }
 }
