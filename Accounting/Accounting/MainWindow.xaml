@@ -220,6 +220,9 @@
                     <TextBlock Margin="3">ОТЧЕТЫ</TextBlock>
                 </StackPanel>
             </TabItem.Header>
+            <TabItem.Content >
+                <Image Source="Resources/IMG_20190510_113210.jpg"></Image>
+            </TabItem.Content>
 
         </TabItem>
     </TabControl>
