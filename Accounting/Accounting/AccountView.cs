@@ -22,6 +22,21 @@ namespace Accounting
             this.days = ac.days;
             this.usedDates = ac.usedDates;
             finDate = StDate.AddDays(days);
+            stDateText = StDate.ToString("dd-MM-yyyy");
+            finDateText = StDate.AddDays(days).ToString("dd-MM-yyyy");
+            DateTime now = DateTime.Now;
+            DateTime last = StDate.AddDays(days);
+            TimeSpan span = last - now;
+            dayOst = Convert.ToInt32(span.TotalDays);
+            daysPos = usedDates.Count;
+            lastPos = "";
+
+            if (dayOst <= 7 )
+            {
+                isNeedNewAcc = true;
+                isOk = "⛔";
+            }
+
         }
 
         public bool isCurrentAcc(DateTime date)
@@ -32,5 +47,17 @@ namespace Accounting
             }
             return false;
         }
+
+        public string stDateText  { get; set; }
+        public string finDateText { get; set; }
+        public int    dayOst { get; set; }
+        public int daysPos { get; set; }
+        public string lastPos { get; set; }
+
+
+
+        public bool isNeedNewAcc { get; set; }
+        public string isOk { get; set; }
+
     }
 }

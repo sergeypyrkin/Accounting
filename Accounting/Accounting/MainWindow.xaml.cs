@@ -43,6 +43,9 @@ namespace Accounting
                     accountsViews.Add(av);
                 }
             }
+            accountsViews = accountsViews.OrderBy(o => o.fio).ToList();
+            dataGridView.ItemsSource = accountsViews;
+            dataGridView.Items.Refresh();
         }
 
 
@@ -67,6 +70,17 @@ namespace Accounting
                 accounts.Add(aw.acc);
                 saveAccounts();
             }
+            getAccounts();
+        }
+
+        //нажатие на ссылку посещения
+        private void posLink(object sender, RoutedEventArgs e)
+        {
+        }
+
+        //удалить
+        private void delLink(object sender, RoutedEventArgs e)
+        {
         }
     }
 }
