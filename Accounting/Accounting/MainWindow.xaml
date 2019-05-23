@@ -5,7 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Accounting"
         mc:Ignorable="d"
-        Title="MainWindow" Height="700" Width="1200">
+        SizeChanged="MainWindow_OnSizeChanged"
+        StateChanged="MainWindow_OnStateChanged"
+        Title="УЧЕТ АБОНЕНТОВ" Height="700" Width="1250">
     <TabControl>
         <TabItem x:Name="calendarTab">
             <TabItem.Header>
@@ -27,8 +29,8 @@
 
                     <Button
                         x:Name="b1"
-                        Canvas.Left="1053"
-                        Canvas.Top="20"
+                        Canvas.Left="1093"
+                        Canvas.Top="23"
                         Width="100"
                         Click="newAccount"
                         Content="СОЗДАТЬ НОВЫЙ"
@@ -38,7 +40,7 @@
                         x:Name="dataGridView"
                         Canvas.Left="23"
                         Canvas.Top="83"
-                        Width="1130"
+                        Width="1170"
                         Height="500"
                         HorizontalAlignment="Stretch"
                         BorderBrush="#FF25A0DA"
@@ -51,10 +53,12 @@
                         SelectionMode="Single">
                         <ListView.ItemContainerStyle>
                             <Style TargetType="{x:Type ListViewItem}">
+                                <EventSetter Event="MouseEnter" Handler="lvi_MouseEnter" />
+
                                 <Style.Triggers>
 
 
- 
+
 
 
 

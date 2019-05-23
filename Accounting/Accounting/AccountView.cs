@@ -15,8 +15,10 @@ namespace Accounting
 
         public int days { get; set; }
         public List<DateTime> usedDates = new List<DateTime>();
+        public Account acc;
         public AccountView(Account ac)
         {
+            this.acc = ac;
             this.fio = ac.fio;
             this.StDate = ac.StDate;
             this.days = ac.days;
