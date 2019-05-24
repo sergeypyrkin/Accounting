@@ -213,7 +213,9 @@
                     <TextBlock Margin="3">ПОСЕЩЕНИЯ</TextBlock>
                 </StackPanel>
             </TabItem.Header>
-
+            <TabItem.Content>
+                <local:VisitControl Margin="0,0,6,0" HorizontalAlignment="Left" VerticalAlignment="Top"></local:VisitControl>
+            </TabItem.Content>
         </TabItem>
 
 

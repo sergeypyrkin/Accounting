@@ -31,6 +31,7 @@ namespace Accounting
             InitializeComponent();
             datePicker1.SelectedDate = DateTime.Today;
             getAccounts();
+            b0.Focus();
         }
 
         public void getAccounts()
