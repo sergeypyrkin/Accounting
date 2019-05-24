@@ -109,13 +109,19 @@ namespace Accounting
 
         public void changeSize()
         {
-            dataGridView.Width = ActualWidth -80;
+            dataGridView.Width = ActualWidth - 80;
             dataGridView.Height = ActualHeight - 200;
+            visControl.Height = ActualHeight - 80;
+            visControl.Width = ActualWidth - 80;
+            visControl.dataGridView.Height = ActualHeight - 200;
+            visControl.dataGridView.Width = ActualWidth - 100;
+
         }
 
         private void MainWindow_OnStateChanged(object sender, EventArgs e)
         {
             changeSize();
+
         }
     }
 }

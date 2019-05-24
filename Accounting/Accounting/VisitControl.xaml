@@ -12,8 +12,99 @@
         Canvas.Left="161"
         Canvas.Top="20"
         Width="100"
-        Click="getAccount"
+        Click="getAccounts"
         Content="ПОЛУЧИТЬ"
         Tag="1" Height="50" />
+
+    <Button
+        x:Name="b1"
+        Canvas.Left="1093"
+        Canvas.Top="23"
+        Width="100"
+        Click="save"
+        Content="СОХРАНИТЬ"
+        Tag="1" Height="50" />
+
+    <ListView
+                        x:Name="dataGridView"
+                        Canvas.Left="23"
+                        Canvas.Top="83"
+                        Width="751"
+                        Height="335"
+                        HorizontalAlignment="Stretch"
+                        BorderBrush="#FF25A0DA"
+                        BorderThickness="1"
+                        FontFamily="Microsoft Sans Serif"
+                        Foreground="#FF000000"
+                        IsTextSearchEnabled="False"
+                        KeyboardNavigation.DirectionalNavigation="Cycle"
+                        
+                        SelectionMode="Single">
+        <ListView.ItemContainerStyle>
+            <Style TargetType="{x:Type ListViewItem}">
+                <EventSetter Event="MouseEnter" Handler="lvi_MouseEnter" />
+
+                <Style.Triggers>
+
+                    <DataTrigger Binding="{Binding isVisited}" Value="true">
+                        <Setter Property="Background" Value="LightBlue" />
+                    </DataTrigger>
+
+
+
+
+                </Style.Triggers>
+            </Style>
+        </ListView.ItemContainerStyle>
+        <ListView.View>
+            <GridView>
+
+                <GridViewColumn Width="40" Header="" >
+                    <GridViewColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBox
+                                                Foreground="Red"
+                                                Width="40"
+                                                FontWeight="Bold"
+                                                Background="{Binding matchColor}"
+                                                BorderThickness="0"
+                                                Text="{Binding isOk}" />
+                        </DataTemplate>
+                    </GridViewColumn.CellTemplate>
+                </GridViewColumn>
+                <GridViewColumn Width="250" Header="ФИО" >
+                    <GridViewColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBox
+                                                Width="250"
+                                                FontWeight="Bold"
+                                                Background="{Binding matchColor}"
+                                                BorderThickness="0"
+                                                Text="{Binding fio}" />
+                        </DataTemplate>
+                    </GridViewColumn.CellTemplate>
+                </GridViewColumn>
+                <GridViewColumn Width="1000" Header="ПОСЕЩЕНИЕ">
+                    <GridViewColumn.CellTemplate>
+                        <DataTemplate>
+                            <CheckBox
+                                                IsChecked="{Binding isVisited}"
+                                                Width="300"
+                                                Background="{Binding matchColor}"
+                                                BorderThickness="0"
+                                                 />
+                        </DataTemplate>
+                    </GridViewColumn.CellTemplate>
+                </GridViewColumn>
+
+
+                
+
+            </GridView>
+        </ListView.View>
+    </ListView>
+
+
+
 
 </Canvas>

@@ -57,6 +57,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="AccountVisit.cs" />
     <Compile Include="VisitControl.xaml.cs">
       <DependentUpon>VisitControl.xaml</DependentUpon>
     </Compile>
