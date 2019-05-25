@@ -53,6 +53,40 @@ namespace Accounting
                 isOk = "➕";
             }
 
+
+            if (acc.usedDates.Count == 0)
+            {
+                lastPos = "";
+            }
+            if (acc.usedDates.Count > 0)
+            {
+                List<DateTime> dates = acc.usedDates.OrderByDescending(o => o.Date).ToList();
+                DateTime lipos  = dates[0];
+                TimeSpan ts = lipos - DateTime.Now;
+                int kk = ts.Days;
+                if (kk == 0)
+                {
+                    lastPos = "СЕГОДНЯ";
+                    return;
+                }
+
+                if (kk == -1)
+                {
+                    lastPos = "ВЧЕРА";
+                    return;
+
+                }
+                if (kk == -2)
+                {
+                    lastPos = "ПОЗАВЧЕРА";
+                    return;
+
+                }
+                lastPos = "" + (0 - kk) + "  дня назад";
+
+
+            }
+
         }
 
         public bool isCurrentAcc(DateTime date)
