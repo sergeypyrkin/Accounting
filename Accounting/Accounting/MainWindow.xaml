@@ -8,7 +8,7 @@
         SizeChanged="MainWindow_OnSizeChanged"
         StateChanged="MainWindow_OnStateChanged"
         Title="УЧЕТ АБОНЕНТОВ" Height="700" Width="1250">
-    <TabControl>
+    <TabControl SelectionChanged="OnSelectionChanged" >
         <TabItem x:Name="calendarTab">
             <TabItem.Header>
                 <StackPanel Orientation="Horizontal">

@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Forms;
@@ -14,6 +16,7 @@ using System.Windows.Shapes;
 using ListViewItem = System.Windows.Controls.ListViewItem;
 using MessageBox = System.Windows.MessageBox;
 using MouseEventArgs = System.Windows.Input.MouseEventArgs;
+using TabControl = System.Windows.Controls.TabControl;
 
 namespace Accounting
 {
@@ -122,6 +125,19 @@ namespace Accounting
         {
             changeSize();
 
+        }
+
+
+        //переключение вкладки
+        private void OnSelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+            TabControl tabControl = sender as TabControl; // e.Source could have been used instead of sender as well
+            TabItem item = tabControl.SelectedValue as TabItem;
+            if (item.Name == "calendarTab")
+            {
+                getAccounts();
+            }
         }
     }
 }
