@@ -83,6 +83,8 @@ namespace Accounting
         //нажатие на ссылку посещения
         private void posLink(object sender, RoutedEventArgs e)
         {
+            var form = new AccountPositions(ovView);
+            form.ShowDialog();
         }
 
         //удалить

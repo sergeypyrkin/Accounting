@@ -57,10 +57,17 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="AccountPositions.xaml.cs">
+      <DependentUpon>AccountPositions.xaml</DependentUpon>
+    </Compile>
     <Compile Include="AccountVisit.cs" />
     <Compile Include="VisitControl.xaml.cs">
       <DependentUpon>VisitControl.xaml</DependentUpon>
     </Compile>
+    <Page Include="AccountPositions.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="AccountWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
