@@ -41,7 +41,7 @@ namespace Accounting
             accountsViews.Clear();
             foreach (Account acc in accounts)
             {
-                AccountView av = new AccountView(acc);
+                AccountView av = new AccountView(acc, accounts);
                 if (av.isCurrentAcc(curDate))
                 {
                     accountsViews.Add(av);

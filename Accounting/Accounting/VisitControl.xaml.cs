@@ -41,10 +41,11 @@ namespace Accounting
             {
 
                 AccountVisit av = new AccountVisit(acc);
-                AccountView a = new AccountView(acc);
+                AccountView a = new AccountView(acc, accounts);
                 if (a.isCurrentAcc(curDate))
                 {
                     av.date = curDate;
+                    av.isVisited = av.acc.usedDates.Contains(curDate);
                     accountsVisits.Add(av);
                    
                 }
@@ -65,6 +66,26 @@ namespace Accounting
 
         private void save(object sender, RoutedEventArgs e)
         {
+            foreach (var visitor in accountsVisits)
+            {
+                Account acc = visitor.acc;
+                if (visitor.isVisited)
+                {
+                    if (!acc.usedDates.Contains(curDate))
+                    {
+                        acc.usedDates.Add(curDate);
+                    }
+                }
+                else
+                {
+                    acc.usedDates.Remove(curDate);
+                }
+            }
+
+            Account.SaveToFile("accounts", accounts);
+            getAccounts();
+
+
         }
     }
 

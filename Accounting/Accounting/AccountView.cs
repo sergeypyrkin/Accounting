@@ -16,8 +16,11 @@ namespace Accounting
         public int days { get; set; }
         public List<DateTime> usedDates = new List<DateTime>();
         public Account acc;
-        public AccountView(Account ac)
+        public List<Account> accounts;
+        public AccountView(Account ac, List<Account> accounts)
         {
+            this.accounts = accounts;
+
             this.acc = ac;
             this.fio = ac.fio;
             this.StDate = ac.StDate;
@@ -29,7 +32,7 @@ namespace Accounting
             DateTime now = DateTime.Now;
             DateTime last = StDate.AddDays(days);
             TimeSpan span = last - now;
-            dayOst = Convert.ToInt32(span.TotalDays);
+            dayOst = Convert.ToInt32(span.TotalDays) + 1;
             daysPos = usedDates.Count;
             lastPos = "";
 
@@ -37,6 +40,17 @@ namespace Accounting
             {
                 isNeedNewAcc = true;
                 isOk = "⛔";
+            }
+
+            if (accounts.Exists(o => o.fio == this.fio && o != this.acc && o.StDate.CompareTo(DateTime.Now) == 1))
+            {
+                isNextExist = true;
+            }
+
+            if (isNextExist)
+            {
+                isNeedNewAcc = false;
+                isOk = "➕";
             }
 
         }
@@ -60,6 +74,8 @@ namespace Accounting
 
         public bool isNeedNewAcc { get; set; }
         public string isOk { get; set; }
+
+        public bool isNextExist { get; set; }
 
     }
 }
