@@ -73,7 +73,8 @@ namespace Accounting
 
         private void newAccount(object sender, RoutedEventArgs e)
         {
-            mouve_mouse(100, 100);
+            sendTextMember(0);
+            //mouve_mouse(100, 100);
             return;
             var aw = new AccountWindow();
             aw.ShowDialog();
@@ -87,10 +88,47 @@ namespace Accounting
 
         private void mouve_mouse(int x, int y)
         {
-            Thread.Sleep(1000);
+            Thread.Sleep(5000);
             Point start = new Point(100, 100);
-            LinearSmoothMove(start, new TimeSpan(0,0,3));
+            LinearSmoothMove(start, new TimeSpan(0,0,1));
+            SendKeys.SendWait("^+{TAB}");
+            LinearSmoothMove(start, new TimeSpan(0, 0, 1));
+
         }
+
+        public void sendTextMember(int member)
+        {
+            //ждем немножно
+            Thread.Sleep(getRandom(1000,1500));
+            if (member != 0) //переключаемся
+            {
+                SendKeys.SendWait("^+{TAB}");
+            }
+            //двигаемся на кнопку
+            Thread.Sleep(getRandom(100, 200));
+            Point start = new Point(720, 420);   //+-20  , +-10 
+            LinearSmoothMove(start, new TimeSpan(0, 0, 0,0, getRandom(300, 700)));
+            mouseClick();
+            Thread.Sleep(getRandom(200, 300));
+            SendKeys.SendWait("^+{TAB}");
+        }
+
+        public void mouseClick()
+        {
+            var point = MouseOperations.GetCursorPosition();
+            int x = point.X;
+            int y = point.Y;
+            MouseOperations.mouse_event((int)(MouseOperations.MouseEventFlags.Absolute | MouseOperations.MouseEventFlags.LeftDown), x, y, 0, 0);
+            MouseOperations.mouse_event((int)(MouseOperations.MouseEventFlags.Absolute | MouseOperations.MouseEventFlags.LeftUp), x, y, 0, 0);
+        }
+
+        public int getRandom(int min, int max)
+        {
+            Random rand = new Random();
+            return rand.Next(min, max);
+        }
+
+
 
         public void LinearSmoothMove(Point newPosition, TimeSpan duration)
         {
