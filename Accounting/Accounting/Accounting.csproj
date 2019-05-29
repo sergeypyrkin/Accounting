@@ -61,6 +61,7 @@
       <DependentUpon>AccountPositions.xaml</DependentUpon>
     </Compile>
     <Compile Include="AccountVisit.cs" />
+    <Compile Include="MouseOperations.cs" />
     <Compile Include="VisitControl.xaml.cs">
       <DependentUpon>VisitControl.xaml</DependentUpon>
     </Compile>

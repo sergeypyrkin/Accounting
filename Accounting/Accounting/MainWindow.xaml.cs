@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -16,6 +18,7 @@ using System.Windows.Shapes;
 using ListViewItem = System.Windows.Controls.ListViewItem;
 using MessageBox = System.Windows.MessageBox;
 using MouseEventArgs = System.Windows.Input.MouseEventArgs;
+using Point = System.Windows.Point;
 using TabControl = System.Windows.Controls.TabControl;
 
 namespace Accounting
@@ -70,6 +73,8 @@ namespace Accounting
 
         private void newAccount(object sender, RoutedEventArgs e)
         {
+            mouve_mouse(100, 100);
+            return;
             var aw = new AccountWindow();
             aw.ShowDialog();
             if (aw.DialogResult == true)
@@ -79,6 +84,42 @@ namespace Accounting
             }
             getAccounts();
         }
+
+        private void mouve_mouse(int x, int y)
+        {
+            Thread.Sleep(1000);
+            Point start = new Point(100, 100);
+            LinearSmoothMove(start, new TimeSpan(0,0,3));
+        }
+
+        public void LinearSmoothMove(Point newPosition, TimeSpan duration)
+        {
+            var point = MouseOperations.GetCursorPosition();
+            Point start = new Point(point.X, point.Y);
+
+            // Find the vector between start and newPosition
+            double deltaX = newPosition.X - start.X;
+            double deltaY = newPosition.Y - start.Y;
+
+            // start a timer
+            Stopwatch stopwatch = new Stopwatch();
+            stopwatch.Start();
+
+            double timeFraction = 0.0;
+
+            do
+            {
+                timeFraction = (double)stopwatch.Elapsed.Ticks / duration.Ticks;
+                if (timeFraction > 1.0)
+                    timeFraction = 1.0;
+
+                PointF curPoint = new PointF(Convert.ToInt32(start.X + timeFraction * deltaX),
+                    Convert.ToInt32(start.Y + timeFraction * deltaY));
+                MouseOperations.SetCursorPosition(Convert.ToInt32(curPoint.X), Convert.ToInt32(curPoint.Y));
+                Thread.Sleep(20);
+            } while (timeFraction < 1.0);
+        }
+
 
         //нажатие на ссылку посещения
         private void posLink(object sender, RoutedEventArgs e)
